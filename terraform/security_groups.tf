@@ -18,6 +18,13 @@ resource "aws_security_group" "midproject-consul-sg" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow ssh from the world"
   }
+  # Allow ICMP from control host IP
+  ingress {
+    from_port   = 8
+    to_port     = 0
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     from_port   = 8500
@@ -26,7 +33,21 @@ resource "aws_security_group" "midproject-consul-sg" {
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow consul UI access from the world"
   }
+  # Allow all traffic from HTTP port 8080
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
+  # Allow all traffic from HTTP port 80
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   egress {
     from_port       = 0
     to_port         = 0
