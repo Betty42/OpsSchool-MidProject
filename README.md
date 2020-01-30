@@ -1,6 +1,4 @@
 # OpsSchool-MidProject
-Opsschool Mid Course project. Creates a VPC (on us-east-1 by default) with two availability zones, each one with two subnets, one public and one private. The public subnets contain a single NAT, a Jenkins master (on one subnet), and a Jenkins node (on the other). The private subnets contain an EKS master and a worker group. Once the Jenkins is up and the required credentials are entered, you can configure a pipeline job to get a phonebook app from git, dockerfy it, and deploy it to EKS, on two pods with a load-balancer.
-In this assignment you will build a small prod like environment
 
 Opsschool Mid Course project's goal is to deploy a highly available web application on AWS, that is publicly accessible (open to the internet).
 Tools used:
